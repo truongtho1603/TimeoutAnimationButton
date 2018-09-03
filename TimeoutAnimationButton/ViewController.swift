@@ -33,11 +33,11 @@ class ViewController: UIViewController {
         let highlightLayer = CAShapeLayer()
         highlightLayer.strokeStart = 1.0
         highlightLayer.strokeEnd = 1.0
-        highlightLayer.strokeColor = UIColor.yellow.cgColor// view.backgroundColor?.cgColor
+        highlightLayer.strokeColor = view.backgroundColor?.cgColor
         highlightLayer.fillColor = UIColor.clear.cgColor
-        highlightLayer.lineWidth = 10.0
-        highlightLayer.lineJoin = kCALineJoinRound
-        highlightLayer.lineCap = kCALineCapButt
+        highlightLayer.lineWidth = 11.0
+        highlightLayer.lineJoin = kCALineJoinBevel
+        highlightLayer.lineCap = kCALineCapSquare
         highlightLayer.path = foregroundPath.cgPath
 
         let pathAnimation = CABasicAnimation()
@@ -48,6 +48,7 @@ class ViewController: UIViewController {
         pathAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
         pathAnimation.fillMode = kCAFillModeBoth
         pathAnimation.isRemovedOnCompletion = false
+        pathAnimation.repeatCount = .infinity
 
         highlightLayer.add(pathAnimation, forKey: nil)
         playButton.layer.addSublayer(highlightLayer)
